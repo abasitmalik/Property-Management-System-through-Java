@@ -1,0 +1,105 @@
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JTextArea;
+
+/**
+ *
+ * @author hp
+ */
+public class PropertyManagementSystem {
+   
+ private List<Property> properties;
+    private List<Sale> sales;
+    private List<Rental> rentals;
+
+    public PropertyManagementSystem() {
+        properties = new ArrayList<>();
+        sales = new ArrayList<>();
+        rentals = new ArrayList<>();
+    }
+
+    public void addProperty(Property property) {
+        properties.add(property);
+    }
+
+    public void removeProperty(Property property) {
+        properties.remove(property);
+    }
+
+    public List<Property> getProperties() {
+        return properties;
+    }
+
+    public void addSale(Sale sale) {
+        sales.add(sale);
+    }
+
+    public void addRental(Rental rental) {
+        rentals.add(rental);
+    }
+
+    public void displayProperties(JTextArea outputTextArea) {
+        if (properties.isEmpty()) {
+            outputTextArea.append("No properties available.\n");
+            return;
+        }
+
+        outputTextArea.append("Properties:\n");
+        for (Property property : properties) {
+            outputTextArea.append("Address: " + property.getAddress() + "\n");
+            outputTextArea.append("---------------\n");
+        }
+    }
+
+    public void displayRentals(JTextArea outputTextArea) {
+        if (rentals.isEmpty()) {
+            outputTextArea.append("No rentals available.\n");
+            return;
+        }
+
+        outputTextArea.append("Rentals:\n");
+        for (Rental rental : rentals) {
+            outputTextArea.append("Property: " + rental.getProperty().getAddress() + "\n");
+            outputTextArea.append("Tenant: " + rental.getTenant().getName() + "\n");
+            outputTextArea.append("Duration: " + rental.getDurationMonths() + " months\n");
+            outputTextArea.append("---------------\n");
+        }
+    }
+
+    public void displaySales(JTextArea outputTextArea) {
+        if (sales.isEmpty()) {
+            outputTextArea.append("No sales available.\n");
+            return;
+        }
+
+        outputTextArea.append("Sales:\n");
+        for (Sale sale : sales) {
+            outputTextArea.append("Property: " + sale.getProperty().getAddress() + "\n");
+            outputTextArea.append("Sale Price: " + sale.getSalePrice() + "\n");
+            outputTextArea.append("Buyer: " + sale.getBuyer().getName() + "\n");
+            outputTextArea.append("---------------\n");
+        }
+    }
+
+    public Rental rentProperty(Property property, Tenant tenant, int durationMonths) {
+        if (!property.isOccupied() && !property.isForSale()) {
+            Rental rental = new Rental(tenant, property, durationMonths);
+            property.setOccupied(true);
+            property.setCurrentTenant(tenant);
+            addRental(rental);
+            return rental;
+        }
+        return null;
+    }
+
+    public Property findPropertyByAddress(String rentPropertyAddress) {
+        for (Property property : properties) {
+            if (property.getAddress().equalsIgnoreCase(rentPropertyAddress)) {
+                return property;
+            }
+        }
+        return null;
+    }
+
+}
