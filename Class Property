@@ -1,0 +1,75 @@
+public class Property {
+    private String address;
+    private double rent;
+    private boolean occupied;
+    private Tenant currentTenant;
+    private boolean forSale;
+    private Buyer currentOwner;
+
+    public Property(String address, double rent) {
+        this.address = address;
+        this.rent = rent;
+        this.occupied = false;
+        this.currentTenant = null;
+        this.forSale = false;
+        this.currentOwner = null;
+    }
+
+    // Getters and setters for property fields
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public double getRent() {
+        return rent;
+    }
+
+    public void setRent(double rent) {
+        this.rent = rent;
+    }
+
+    public boolean isOccupied() {
+        return occupied;
+    }
+
+    public void setOccupied(boolean occupied) {
+        this.occupied = occupied;
+    }
+
+    public boolean isForSale() {
+        return forSale;
+    }
+
+    public void setForSale(boolean forSale) {
+        this.forSale = forSale;
+    }
+
+    public Tenant getCurrentTenant() {
+        return currentTenant;
+    }
+
+    public void setCurrentTenant(Tenant currentTenant) {
+        this.currentTenant = currentTenant;
+    }
+
+    public Buyer getCurrentOwner() {
+        return currentOwner;
+    }
+
+    public void setCurrentOwner(Buyer currentOwner) {
+        this.currentOwner = currentOwner;
+    }
+
+    boolean getPropertyDetailsForFile() {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    String getPropertyDetailsForDisplay() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+}
