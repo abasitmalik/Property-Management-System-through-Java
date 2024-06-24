@@ -1,0 +1,23 @@
+public class Rental {
+    private Tenant tenant;
+    private Property property;
+    private int durationMonths;
+
+    public Rental(Tenant tenant, Property property, int durationMonths) {
+        this.tenant = tenant;
+        this.property = property;
+        this.durationMonths = durationMonths;
+    }
+
+    public Tenant getTenant() {
+        return tenant;
+    }
+
+    public Property getProperty() {
+        return property;
+    }
+
+    public int getDurationMonths() {
+        return durationMonths;
+    }
+}
