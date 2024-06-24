@@ -1,0 +1,32 @@
+public class Sale {
+
+    private Property property;
+    private double salePrice;
+    private Buyer buyer;
+
+    public Sale(Property property, double salePrice, Buyer buyer) {
+        this.property = property;
+        this.salePrice = salePrice;
+        this.buyer = buyer;
+    }
+
+    Sale(String propertyAddress, double salePrice, Buyer buyer, boolean occupied) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    public Property getProperty() {
+        return property;
+    }
+
+    public double getSalePrice() {
+        return salePrice;
+    }
+
+    public Buyer getBuyer() {
+        return buyer;
+    }
+
+    boolean getSaleDetailsForFile() {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+}
